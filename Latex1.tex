@@ -1,0 +1,461 @@
+\documentclass[11pt,a4paper,oneside]{amsart}
+\pdfoutput=1
+
+%%%%%%%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage{refcheck}
+\usepackage[shortlabels]{enumitem}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[alphabetic,initials]{amsrefs}
+\usepackage{comment}
+%\usepackage[pagebackref=true]{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{tcolorbox}
+\usepackage{tikz-cd}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{fancyhdr}
+\usepackage{amsthm,amsmath,amscd,amssymb}
+\pagestyle{fancy}
+\usepackage[shortlabels]{enumitem}
+\usepackage{breqn} 
+\usepackage{amsfonts}
+%\usetikzlibrary{calc}
+%\usetikzlibrary{decorations.pathmorphing}
+% A TikZ style for curved arrows of a fixed height, due to AndréC.
+%\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+ %   .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+%    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    %.. (\tikztotarget)\tikztonodes}},
+   % settings/.code={\tikzset{quiver/.cd,#1}
+  %      \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
+ %   quiver/.cd,pos/.initial=0.35,height/.initial=0}
+
+% TikZ arrowhead/tail styles.
+%\tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
+%\tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
+%\tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
+% TikZ arrow styles.
+%\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+%\usepackage[arrow,curve,matrix,tips,2cell]{xy}
+\usepackage[hmargin=2cm,vmargin=2cm]{geometry}
+
+
+
+\usepackage{hyperref}
+\usepackage{cleveref}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%% FORMATTING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{\thepage}
+\rfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\setlength{\headheight}{13pt}
+\setlength{\footskip}{13pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% SPECIAL MACROS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%To add label to inline equation; from https://tex.stackexchange.com/questions/271062/labeling-a-text-and-referencing-it-later
+\makeatletter
+\newcommand*{\inlineequation}[2][]{%
+  \begingroup
+    % Put \refstepcounter at the beginning, because
+    % package `hyperref' sets the anchor here.
+    \refstepcounter{equation}%
+    \ifx\\#1\\%
+    \else
+      \label{#1}%
+    \fi
+    % prevent line breaks inside equation
+    \relpenalty=10000 %
+    \binoppenalty=10000 %
+    \ensuremath{%
+      % \displaystyle % larger fractions, ...
+      #2%
+    }%
+    ~\@eqnnum
+  \endgroup
+}
+\makeatother
+
+
+
+
+%
+%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{exercise}{Exercise}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{definitions*}{Definitions}
+
+\newtheorem{question}[theorem]{Question}
+\newtheorem*{question*}{Question}
+\newtheorem{questions}[theorem]{Questions}
+\newtheorem*{questions*}{Questions}
+\newtheorem{problem}[theorem]{Problem}
+
+\newtheorem{example}[theorem]{Example}
+\newtheorem{examples}[theorem]{Examples}
+
+\newtheorem{thm}{Theorem}[subsection]
+\renewcommand{\thethm}{\Alph{thm}}
+\newtheorem{cor}[thm]{Corollary}
+\renewcommand{\thecor}{\Alph{cor}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% FONTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\mc}{\mathcal}
+%
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cF}{\mathcal F}
+\newcommand{\cG}{\mathcal G}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cI}{\mathcal I}
+\newcommand{\cJ}{\mathcal J}
+\newcommand{\cK}{\mathcal K}
+\newcommand{\cL}{\mathcal L}
+\newcommand{\cM}{\mathcal M}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cO}{\mathcal O}
+\newcommand{\cP}{\mathcal P}
+\newcommand{\cQ}{\mathcal Q}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\cT}{\mathcal T}
+\newcommand{\cU}{\mathcal U}
+\newcommand{\cV}{\mathcal V}
+\newcommand{\cW}{\mathcal W}
+\newcommand{\cX}{\mathfrak{X}}
+\newcommand{\cZ}{\mathcal Z}
+
+\renewcommand{\H}{\textup{H}}
+
+%
+% doppelter Balken
+%
+\def\Az{\mathbb{A}}
+\def\Cz{\mathbb{C}}
+\def\Fz{\mathbb{F}}
+\def\Iz{\mathbb{I}}
+\def\Kz{\mathbb{K}}
+\def\Lz{\mathbb{L}}
+\def\Mz{\mathbb{M}}
+\def\Nz{\mathbb{N}}
+\def\Hz{\mathbb{H}}
+\def\Pz{\mathbb{P}}
+\def\Qz{\mathbb{Q}}
+\def\Rz{\mathbb{R}}
+\def\Tz{\mathbb{T}}
+\def\Zz{\mathbb{Z}}
+\def\Sz{\mathbb{S}}
+\def\1z{\mathbb{1}}
+%
+% Fraktur
+%
+\newcommand{\fA}{\mathfrak A}
+\newcommand{\fB}{\mathfrak B}
+\newcommand{\fC}{\mathfrak C}
+\newcommand{\fD}{\mathfrak D}
+\newcommand{\fE}{\mathfrak E}
+\newcommand{\fF}{\mathfrak F}
+\newcommand{\fG}{\mathfrak G}
+\newcommand{\fH}{\mathfrak H}
+\newcommand{\fI}{\mathfrak I}
+\newcommand{\fJ}{\mathfrak J}
+\newcommand{\fK}{\mathfrak K}
+\newcommand{\fL}{\mathfrak L}
+\newcommand{\fM}{\mathfrak M}
+\newcommand{\fN}{\mathfrak N}
+\newcommand{\fP}{\mathfrak P}
+\newcommand{\fT}{\mathfrak T}
+\newcommand{\fW}{\mathfrak W}
+\newcommand{\fX}{\mathfrak X}
+\newcommand{\fY}{\mathfrak Y}
+
+
+\newcommand{\mfa}{\mathfrak{a}}
+\newcommand{\mfb}{\mathfrak{b}}
+\newcommand{\mfc}{\mathfrak{c}}
+\newcommand{\mff}{\mathfrak{f}}
+\newcommand{\mfg}{\mathfrak{g}}
+\newcommand{\mfk}{\mathfrak{k}}
+\newcommand{\mfl}{\mathfrak{l}}
+\newcommand{\mfm}{\mathfrak{m}}
+\newcommand{\mfn}{\mathfrak{n}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\mfq}{\mathfrak{q}}
+\newcommand{\mfs}{\mathfrak{s}}
+\newcommand{\mft}{\mathfrak{t}}
+
+
+\newcommand{\scA}{\mathscr{A}}
+\newcommand{\scB}{\mathscr{B}}
+\newcommand{\scS}{\mathscr{S}}
+\newcommand{\scT}{\mathscr{T}}%
+
+
+\newcommand{\eps}{\varepsilon}
+
+%%%%%%%%%%%%%%%%%%%%%%%%% TEXTUP STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newcommand{\fix}{\textup{fix}}
+
+\newcommand{\res}{{\rm res}}
+\newcommand{\Cl}{\textup{Cl}}
+\newcommand{\Gal}{\textup{Gal}}
+\newcommand{\Prim}{\textup{Prim}}
+\newcommand{\Spl}{\textup{Spl}}
+\newcommand{\sgn}{\textup{sign}}
+
+\newcommand{\Int}{\int\limits}
+\newcommand{\halb}{\tfrac{1}{2}}
+\newcommand{\Hom}{{\rm Hom}\,}
+\newcommand{\End}{{\rm End}\,}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\Tr}{{\rm Tr\,}}
+\newcommand{\Sp}{{\rm Sp\,}}
+\newcommand{\Spec}{{\rm Spec\,}} % Spektrum
+\newcommand{\ind}{{\rm ind\,}}
+\newcommand{\Coker}{{\rm Coker}\,}
+\newcommand{\id}{{\rm id}}
+\newcommand{\alg}{{\rm alg}}
+\newcommand{\de}{{\rm deg\,}} % Grad
+\newcommand{\tei}{\mid} % teilt
+\newcommand{\ntei}{\nmid} % teilt nicht
+\newcommand{\dis}{\displaystyle}
+\newcommand{\Trace}{{\mathrm Trace}\,}
+\newcommand{\Ind}{\mathrm{ Ind}\,}
+\newcommand{\Sign}{\mathrm{ Sign}\,}
+\newcommand{\Ad}{{\rm Ad\,}}
+\newcommand{\lca}{{\rm LCA}}
+\newcommand{\ab}{{\rm Ab}}
+\renewcommand{\dim}{{\rm dim}}
+\newcommand{\rk}{{\rm rk}}
+\newcommand{\img}{{\rm im\,}}
+\renewcommand{\ker}{{\rm ker}\,}
+\newcommand{\coker}{{\rm coker}\,}
+\newcommand{\lcm}{{\rm lcm}} % kleinstes gemeinsames Vielfaches
+\newcommand{\reg}{^\times} % regulaer
+\newcommand{\pos}{_{>0}} % positiv
+\newcommand{\co}{^{\complement}} % Komplement
+\newcommand{\tr}{\operatorname{tr}} % Spur
+\newcommand{\ev}{\operatorname{ev}} % Auswertung
+\newcommand{\lspan}{{\rm span}} % linearer Aufspann
+\newcommand{\clspan}{\overline{\lspan}} % Abschluss des linearen Auspanns
+\newcommand{\Iso}{{\rm Isom}} % Isometrien
+\newcommand{\abs}[1]{\lvert#1\rvert} % Betrag
+\newcommand{\norm}[1]{\left\|#1\right\|} % Norm
+
+\newcommand{\supp}{{\rm supp}} % Support
+\newcommand{\Min}{{\rm Min}} % Minimalpolynom
+
+
+ \newcommand{\mat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix}\right)} % small (inline) matrix
+\newcommand{\acts}{\curvearrowright} 
+
+\def\clmg{{\rm Cl}_\m^{\bar{\Gamma}}}
+\def\clnl{{\rm Cl}_\n^{\bar{\Lambda}}}
+\def\rmg{R_{\m,\Gamma}}
+\def\pmg{P_{\m,\Gamma}}
+\def\tor{{\rm tor}}
+\def\Kmg{K(\m)^{\bar{\Gamma}}}
+\def\Km{K(\m)}
+\def\Knl{K(\n)^{\bar{\Lambda}}}
+\def\Kn{K(\n)}
+
+\newcommand{\ord}{\textup{ord}} 
+\newcommand{\spn}{\textup{span}}
+\renewcommand{\Im}{\textup{Im}}
+\newcommand{\diag}{\textup{diag}}
+\newcommand{\asc}{\textup{asc}}
+\newcommand{\ann}{\textup{ann}}
+\newcommand{\spec}{\textup{spec}}
+
+% % % commands for full groups % % %
+\newcommand{\fg}[1]{[\![#1]\!]}
+\newcommand{\fu}{\mathfrak{u}}
+\newcommand{\ag}[1]{\mathsf{A}(#1)}
+\newcommand{\sg}[1]{\mathsf{S}(#1)}
+\newcommand{\Sym}{\textrm{Sym}}
+\newcommand{\Homeo}{\textrm{Homeo}}
+\newcommand{\Isom}{\textup{Isom}}
+\newcommand{\Sub}{\textup{Sub}}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\GL}{\textup{GL}}
+\newcommand{\SL}{\textup{SL}}
+\newcommand{\M}{\textup{M}}
+\newcommand{\Mult}{\textup{Mult}}
+\newcommand{\kdim}{\textup{kdim}}
+%\newcommand{\alg}{\textup{alg}}
+\newcommand{\gp}[1]{\langle #1\rangle}
+\newcommand{\mon}[1]{\langle #1\rangle^+}
+
+\newcommand{\Stab}{\textup{Stab}}
+\newcommand{\dom}{\textup{dom}}
+\newcommand{\ran}{\textup{ran}}
+%\newcommand{\tor}{\textup{tor}}
+%
+%
+\newcommand{\im}{\textup{im}}
+\newcommand{\msc}{\mathscr}
+\newcommand{\bd}{\partial\widehat{\cE}}
+\newcommand{\E}{\widehat{\cE}}
+\renewcommand{\sp}{\textup{sp}}
+
+\newcommand{\bbt}{\mathbbm{t}}
+\newcommand{\F}{\mathbf{F}}
+
+
+\newcommand{\blue}{\textcolor{blue}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\green}{\textcolor{green}}
+
+\newcommand{\affT}[1][A] {\mathrm{Aff \thinspace T(#1)}}
+\newcommand{\algk}[1][A]{\overline K^{alg}_1(\mathrm{#1})}
+
+\newcommand{\rrr}[1][3]{\mathbb{R}^#1}
+
+\begin{document}
+
+\title{The Evans-Kishimoto intertwining}
+
+\thispagestyle{fancy}
+
+
+
+\author{Carlos Campoy}
+
+
+
+\date{\today}
+
+
+\maketitle
+
+
+\parskip=0em
+
+\setlength{\parindent}{0cm} \setlength{\parskip}{0.5cm}
+
+
+\maketitle
+
+\section{Introduction}
+
+This is a short note explaining how to apply the Evans-Kishimoto intertwining of two $*$-automorphisms $\alpha$ and $\beta$ with the \textit{Rokhlin property}. This notes are just a reformulation of Gábor Szabó's notes given as supplementary material for a 3-hour lectures series presented at the 16th Spring Institute for Non-commutative Geometry and Operator Algebras (NCGOA) from the 14th to the 19th of May 2018. Some parts we will skip and refer the reader to these notes which can be found in  \href{https://gaborszabo.nfshost.com/publications.html}{https://gaborszabo.nfshost.com/publications.html}. Other sections will be explained more thoroughly. I hope will help those -like me- who could not attend the lecture series. For actions of \textit{locally compact groups} on $C^*$-algebras there is a philosophy underlying many results which can be summarised in the following recipe.
+
+
+
+\begin{tcolorbox}[width=17cm, colframe=black, colback=SkyBlue! 20, halign=left]
+\underline{\textit{Recipe:}} Suppose we have two group actions $\alpha, \beta: G\acts A$ which we want to show they are \textit{cocycle conjugate}. We wish to \begin{enumerate}
+\item Show that $\alpha$ and $\beta$ satisfy some sort of \textit{Rokhlin property}. 
+\item Using the first step one wants something like $\Ad(w_g)\circ \alpha_g \approx \beta_g$ holds approximately in point-norm over a large finite set in $A$ and uniformly over a compact set in $G$. Do the same in the reverse direction. 
+\item Show that both $\alpha$ and $\beta$ has the \textit{approximately central cohomology vanishing property} i..e, for any $\alpha$-cocycle (and $\beta$-cocycle) $w$ with $\norm {[a,w_g]}\approx 0$ over some finite set find a unitary $v$ with $\norm{[v,a]}\approx 0$ and $w_g\approx v\alpha_g(v^*)$. 
+\item Apply the \textit{Evans-Kishimoto intertwining} technique. 
+\end{enumerate}
+\end{tcolorbox}
+
+In these notes we will explain the ingredients of the recipe in the case of single automorphisms (equivalently $\mathbb Z$-actions) with the $\textit{Rokhlin property}$  for unital $C^*$-algebras\footnote{This is just for simplicity.} with a few more (simplifying) assumptions we will make. Let us start from the beginning. 
+
+\section{Rokhlin automorphisms}
+
+\begin{tcolorbox}[colback= LimeGreen! 50]
+\begin{definition}
+Let $A$ and $B$ be $C^*$-algebras equipped with automorphisms $\alpha\in \mathrm{Aut(A)}$, and $\beta\in \mathrm{Aut(B)}$. we say $\alpha$ and $\beta$ are cocycle conjugate if there exists $w\in \mathcal U(\mathcal M(A))$ and an isomorphism $\varphi: A\rightarrow B$ such that $$\Ad w\circ \alpha= \varphi^{-1}\circ \beta \circ \varphi.$$ 
+\end{definition}
+\end{tcolorbox}
+
+\begin{tcolorbox}[colback= LimeGreen! 50]
+\begin{definition}
+Let $A$ be unital and $\alpha: A\rightarrow A$ be a $*$-automorphism. A unitary $u\in \mathcal U(A)$ is a co-boundary if there exists $v\in \mathcal U(A)$ with $u=v\alpha(v^*)$. 
+\end{definition} 
+\end{tcolorbox}
+The next is our most important definition. 
+
+\begin{tcolorbox}[colback= LimeGreen! 50]
+\begin{definition}
+\label{Rokklin prop}
+Let $A$ be unital and separable and $\alpha \in \mathrm{Aut(A)}$. We say $\alpha$ has the Rokhlin property if for all $n\in \mathbb{N}$ there exists approximately central sequences of projections $(e_k)$ and $(f_k)$ in $A$ such that $$1=\lim_{k} \sum_{j=0}^{n-1}\alpha^j(e_k)+\sum_{l=0}^{n}\alpha^l(f_k).$$
+\end{definition}
+\end{tcolorbox}
+
+\begin{remark}
+Thinking in terms of the central sequence algebra $A_\infty\cap A'$ this means for every $n\in \mathbb{N}$  we can find projections $e,f\in A_\infty\cap A'$ such that $$1=\sum_{j=0}^{n-1}\alpha^j(e)+\sum_{l=0}^{n}\alpha^l(f).$$ Thus we have $2n+1$ pairwise orthogonal projections and moreover $\alpha^n(e)=e$ and $\alpha^{n+1}(f)=f$. So that $\alpha$ cycles around these orthogonal projections. 
+\end{remark}
+
+\begin{tcolorbox}[colback= LimeGreen! 50]
+\begin{definition}
+We say $A$ has the \underline{strict} Rokhlin property if for every $n\in \mathbb{N}$ we can find a projection $e\in A_\infty\cap A'$ with $$1=\sum_{j=0}^{n-1}\alpha^{j}(e).$$
+\end{definition}
+\end{tcolorbox}
+\begin{remark}
+It is highly non-trivial to see when $C^*$-algebras can have an automorphism with the Rokhlin property specially since it requires the existence of non-trivial projections. For example $C_r^*(\mathbb{F}_n)$ does not have any projections, or $C(X)$ where $X$ is compact and connected. 
+\end{remark}
+
+To guarantee \textit{approximately central cohomology vanishing} we will impose a very strong condition on our $C^*$-algebras. 
+
+\begin{tcolorbox}[colback= LimeGreen! 50]
+\begin{definition}
+\label{prop (*)}
+Let $A$ be a unital $C^*$-algebra. We say that $A$ has property $(*)$ if there exists $L>0$ such that for all $\varepsilon>0$ and $\mathcal F\subset\subset A$ there exists $\delta>0$ and $\mathcal G \subset \subset A$ such that if $u\in U(A)$ and we have $$\mathrm{max}_{a\in \mathcal G}\norm{[a,u]}\leq \delta$$ there exists an $L$-Lipschitz path $u_t$, with $u_0=1$ and $u_1=u$, such that $$\mathrm{max}_{a\in \mathcal F}\mathrm{max}_{t\in I}\norm{[a,u_t]}<\varepsilon.$$
+\end{definition}
+\end{tcolorbox}
+
+\begin{remark}
+In terms of sequence algebras, this means $A_\infty\cap A'$ is connected (through $L$-Lipschitz paths (?)).
+\end{remark}
+
+\begin{theorem}
+\label{UHF have (*)}
+All UHF-algebras satisfy property $(*)$. 
+\end{theorem}
+\begin{proof}
+Let $\mathbb U$ be a UHF-algebra and let $L=\pi$. Fix $\varepsilon>0$ and some finite set $\mathcal F\subset \subset A$. Because of the structure of UHF algebras we have $\mathbb U\cong M_p\otimes \mathbb U_1$ such that $p\in \mathbb N$ can be chosen to approximate $\mathcal F$ as well as we want. Thus we may assume $\mathcal F\subset M_p\otimes 1$ w.l.o.g. Now, choose $\mathcal G=\{e_{ij}\otimes 1\}$ i..e, the units in $M_p$ diagonally included. Notice that we have a conditional expectation $$E: \mathbb U\rightarrow 1_p\otimes \mathbb U_1: a\mapsto \sum_{i\leq p}(e_{ii}\otimes 1) a (e_{ii}\otimes 1)$$ such that if $ \mathrm{max}_{b\in \mathcal G}[a, b]\leq \delta$, we have $\norm{E(a)-a}\leq p\delta$. Moreover, we can thus fix $\delta>0$ such that that if a unitary $u$ $\delta$-commutes with $\mathcal G$ then there exists a $v\in 1\otimes U_1$, which can be chosen with finite spectrum as close as we want from $u$. Moreover choosing an appropriate branch of the logarithm we can connect $u$ to $v$ through $\gamma_t=e^{log(uv^*)t}v$ which can be chosen to be $\pi$-Lipschitz and of length $\frac{\varepsilon}{2 \mathrm{max_{a\in \mathcal F}\{\norm a\}}}$ or $\varepsilon/2$ if $F=\{0\}$. Since $v$ has finite spectrum it is connected to $1$ through via a $\pi$-Lipschitz path. Hence the concatenation of these two paths gives our result as the second commutes with $\mathcal F$ and $$[\gamma_t, a]\leq \norm{\gamma_t a- va + va - a\gamma_t+av -av}\leq \epsilon$$ as desired.
+\end{proof}
+
+\begin{lemma}
+\label{approx}
+Let $A$ be unital, separable and with property $(*)$. Then, we have that if $\alpha$ is a Rokhlin automorphism on $A$, for all $u\in U(A_\infty\cap A')$ there exists $v\in U(A_\infty\cap A')$ such that $u=v\alpha(v^*)$ i..e, an (approximately central) co-boundary. \footnote{This is sometimes refer to as the \textit{one-cocycle property}.}
+\end{lemma}
+\begin{proof}
+First notice that given a sequence of approximately central sequences $(v_k^{(n)})_k$, the diagonal sequence i.e., $(v^{(k)}_k)_k$ is also approximately central. As a result, it is enough to proof lemma \ref{approx} up to $\varepsilon$ i..e, we show that for all $\epsilon>0$ and for all $u\in U(A_\infty\cap A')$ there exists $v\in U(A_\infty\cap A)$ with $u\approx_\varepsilon v\alpha(v^*)$. First, let $\varepsilon>0$ and pick $n\in \mathbb{N}$ such that $L/n<\varepsilon$, where $L>0$ is the constant from property $(*)$ (definition \ref{prop (*)}). Then we apply the Rokhlin property (definition \ref{Rokklin prop}) to that same $n\in \mathbb{N}$ so that there exists $e,f\in A_\infty\cap A'$ such that the projections $\alpha^j(e)$, $\alpha^l(f)$ partition the space. Moreover, choose a $L$-Lipschitz paths $z_t$, $\gamma_t$ with $z_0=1$ and $z_1=\alpha^n(u_n^*)$, and $\gamma_0$, $\gamma_1=\alpha^{n+1}(u_{n+1}^*$ where $u_k=u\cdots \alpha^{k-1}(u)$\footnote{This choice is made because $u_j\alpha(u_{j-1})=u$ and $\alpha^n(z^*_{\frac{n-1}{n}})\approx u_n$}. Notice we can change the projections $e$ and $f$ by taking sub-sequences and diagonals so that they commute with elements of the form $\alpha^k(z_t)$ and $\alpha^k(u)$ for all $k\in \mathbb{Z}$ and rational $t$ since this set of elements is countable, which will imply the projections commute with $\alpha^k(z_t)$ for all $k\in \mathbb{Z}$ and $t\in [0,1]$. We repeat the same process with $\gamma_t$. Consequently $$v=\sum_{j=0}^{n-1}\alpha^j(e)u_j\alpha^j(z_{j/n})+\sum_{l=0}^{n}\alpha^l(f)u_l\alpha^l(\gamma_{\frac{l}{n+1}})$$ is a unitary such that since $alpha$ cycles the projections, and all projections are orthogonal \begin{align*}v\alpha(v^*)= e \alpha^n(z^*_{\frac{n-1}{n}})\alpha(u^*_{n-1})& +\sum_{j=1}^{n-1}\alpha^j(e)u_j\alpha^j(z_{j/n}z^*_{\frac{j-1}{n}})\alpha(u^*_{j-1})\\& + f\alpha^{n+1}(\gamma^*_{\frac{n}{n+1}})\alpha(u^*_{n+1})+\sum_{l=1}^{n}\alpha^j(f)u_l\alpha^l(\gamma_{\frac{l}{n+1}}\gamma^*_{\frac{l-1}{n+1}})\alpha(u^*_{l-1})\\& \approx_\varepsilon \sum_{j=1}^{n}\alpha^j(e)u_j\alpha(u_{j-1}^*)+\sum_{l=1}^{n+1}\alpha^l(f)u_l\alpha(u_{l-1}^*)\\&= u\end{align*} since $\alpha^n(z^*_{\frac{n-1}{n}})\approx_\epsilon u_n$, $\alpha^{n+1}(\gamma^*_{\frac{n}{n+1}})\approx_\varepsilon u_{n+1}$, $\alpha^l(\gamma_{\frac{l}{l+1}}\gamma^*_{\frac{l-1}{n+1}})\approx_{\varepsilon} 1$, and $\alpha^j(z_{j/n}z^*_{\frac{j}-1{n}})\approx_\varepsilon 1$ and assuming without loss of generality that $A_\infty\cap A'\subset \mathcal B(\mathcal H)$ we see that $$\mathcal H= \bigoplus_{j=1}^{n}\alpha^j(e)(\mathcal H)\oplus\bigoplus_{l=1}^{n+1}\alpha^l(f)(\mathcal H)$$ and each summand above maps a direct summand to itself. Then we use that an operator of the form $a=\oplus_{i}u_i$ has norm given by $\sup_i\norm{u_i}$.
+\end{proof}
+
+\begin{definition}
+If a unital and separable $C^*$-algebra $A$ equipped with an (not necessarily Rokhlin) automorphism $\alpha\in \mathrm{Aut(A)}$ satisfies the conclusions of lemma \ref{approx} we say the pair $(A,\alpha)$ has the one-cocycle property or simply $\alpha$ has the one-cocycle property when the $C^*$-algebra in question is fixed. 
+\end{definition}
+
+we will now state the following theorem which will be the focus of the next section. The proof of the theorem will be the content of the \textit{Evans-Kishimoto intertwining}. 
+
+\begin{theorem}
+Let $A$ be separable and unital, and assume $\alpha$ and $\beta$ are automorphisms with the one-cocycle property. Then, we have that $\alpha\approx_{au}\beta$ if and only if $\alpha$ and $\beta$ are cocycle conjugate via an approximately inner automorphism. 
+\end{theorem}
+
+\section{The Evans-Kishimoto interwining}
+
+
+\end{document}
