@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.3)  5 DEC 2024 15:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.12.3)  6 DEC 2024 16:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -959,22 +959,30 @@ Package hyperref Info: Link coloring OFF on input line 342.
 \openout5 = `Latex1.out'.
 
  [1{C:/Users/U0173366/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3
-] [4] (Latex1.aux)
+] [4]
+Overfull \hbox (7.3707pt too wide) in paragraph at lines 517--518
+\OT1/cmr/m/n/10.95 bin-ing $(10)$ and $(11)$ we see the se-quences of $\OMS/cms
+y/m/n/10.95 ^^C$\OT1/cmr/m/n/10.95 -automorphisms $[](\OML/cmm/m/it/10.95 v[] [
+] v[]\OT1/cmr/m/n/10.95 )$ and $[](\OML/cmm/m/it/10.95 v[] [] v[]\OT1/cmr/m/n/1
+0.95 )$
+ []
+
+[5] [6] (Latex1.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-04>
  ***********
 Package rerunfilecheck Info: File `Latex1.out' has not changed.
-(rerunfilecheck)             Checksum: AD15C89F56D5EACA5E0B8DF38270B13D;512.
+(rerunfilecheck)             Checksum: CD3D66620120CE91B66EFC70B9C6A655;929.
  ) 
 Here is how much of TeX's memory you used:
- 29091 strings out of 474486
- 553148 string characters out of 5753561
- 1946542 words of memory out of 5000000
- 50738 multiletter control sequences out of 15000+600000
+ 29111 strings out of 474486
+ 553360 string characters out of 5753561
+ 1947542 words of memory out of 5000000
+ 50743 multiletter control sequences out of 15000+600000
  570612 words of font info for 82 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 101i,12n,107p,2842b,578s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 101i,12n,107p,2842b,687s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Progra
 m Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Program Files/MiK
 TeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/ty
@@ -994,9 +1002,9 @@ y9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/P
 rogram Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti9.pfb><C:/Program Files/
 MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files/MiKTeX/
 fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Latex1.pdf (4 pages, 287217 bytes).
+Output written on Latex1.pdf (6 pages, 305065 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 27 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 42 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -370,7 +370,7 @@ This is a short note explaining how to apply the Evans-Kishimoto intertwining of
 
 
 
-\begin{tcolorbox}[width=17cm, colframe=black, colback=SkyBlue! 20, halign=left]
+\begin{tcolorbox}[width=17cm, colframe=black, colback=Cyan! 20, halign=left]
 \underline{\textit{Recipe:}} Suppose we have two group actions $\alpha, \beta: G\acts A$ which we want to show they are \textit{cocycle conjugate}. We wish to \begin{enumerate}
 \item Show that $\alpha$ and $\beta$ satisfy some sort of \textit{Rokhlin property}. 
 \item Using the first step one wants something like $\Ad(w_g)\circ \alpha_g \approx \beta_g$ holds approximately in point-norm over a large finite set in $A$ and uniformly over a compact set in $G$. Do the same in the reverse direction. 
@@ -446,18 +446,88 @@ First notice that given a sequence of approximately central sequences $(v_k^{(n)
 \end{proof}
 
 \begin{definition}
-If a unital and separable $C^*$-algebra $A$ equipped with an (not necessarily Rokhlin) automorphism $\alpha\in \mathrm{Aut(A)}$ satisfies the conclusions of lemma \ref{approx} we say the pair $(A,\alpha)$ has the one-cocycle property or simply $\alpha$ has the one-cocycle property when the $C^*$-algebra in question is fixed. 
+If a unital and separable $C^*$-algebra $A$ equipped with an (not necessarily Rokhlin) automorphism $\alpha\in \mathrm{Aut(A)}$ satisfies the conclusions of lemma \ref{approx} we say the pair $(A,\alpha)$ has the one-cocycle property or simply $\alpha$ has the one-cocycle property when the $C^*$-algebra in question is fixed. Moreover, we say $(A,\alpha)$ has the inner  one-cocycle propery if $(A, \Ad w\circ \alpha)$ has the one co-cycle property for all $u\in \mathcal U(A)$ 
 \end{definition}
 
-we will now state the following theorem which will be the focus of the next section. The proof of the theorem will be the content of the \textit{Evans-Kishimoto intertwining}. 
 
-\begin{theorem}
-Let $A$ be separable and unital, and assume $\alpha$ and $\beta$ are automorphisms with the one-cocycle property. Then, we have that $\alpha\approx_{au}\beta$ if and only if $\alpha$ and $\beta$ are cocycle conjugate via an approximately inner automorphism. 
-\end{theorem}
 
 \section{The Evans-Kishimoto interwining}
 
 
-In this sections
+
+
+
+In this section we discuss the final step of our recipe. Notice for now we have restricted our attention to single automorphisms which are equivalent to $\mathbb{Z}$-actions. We will soon be looking at $\mathbb{R}$-actions, where we will be able to adapt some of the discussed methods. In such instance the endgame will again be an Evans-Kishimoto type argument. 
+
+
+we will now state the following theorem which will be the focus of the next section. The proof of the theorem will be the content of the \textit{Evans-Kishimoto intertwining}. 
+
+\begin{theorem}
+Let $A$ be separable and unital, and assume $\alpha$ and $\beta$ are automorphisms with the inner one-cocycle property. Then, we have that $\alpha\approx_{au}\beta$ if and only if $\alpha$ and $\beta$ are cocycle conjugate via an approximately inner automorphism. \label{Evans-Kishimoto} 
+\end{theorem}
+
+\begin{question}
+Is the one-cocycle property closed under conjugation? If not, can we find a big class of $\mathbb{Z}-C^*$-algebras with this property much bigger than those with property $(*)$?
+\end{question}
+
+
+
+\begin{tcolorbox}[colback= Cyan! 20] 
+\underline{The ideas behind the proof}. We will combine $\alpha \approx_{au}\beta$ with the one-cocycle property for these maps and any conjugation by unitaries $\Ad w\circ \alpha$ and $\Ad u\circ \beta$.  We take an incresing sequence of finite sets $\mathcal F_n$ whose union is dense and we will use the unitaries  we get from the equivalence to create new automorphisms $\alpha_{2k}$, $\beta_{2k+1}$ which agree more and more as $k$ goes to infinity. This will give as sequence of automorphisms with \begin{align}Ad u_{2(k-1)}\cdots \Ad u_0\circ \alpha \approx \Ad u_{2k-1}\cdots \Ad u_1\circ \beta\end{align} and by a clever zig-zag argument we will produce with lemma \ref{approx} an approximately central sequence of unitaries $(v_n)$ such that \begin{align}
+u_{2k} \approx v_{2k}\alpha(v_{2k}^*)
+\end{align} and \begin{align}
+u_{2k+1}\approx v_{2k+1}\alpha(v_{2k+1}).
+\end{align} The $v_n$s can be chosen in such a way that the approximate centrality implies that the sequence of automorphisms $\Ad v_{2k}\cdots v_0$ and $\Ad v_{2k+1}\cdots v_1$ converge, to (approximately inner) automorphisms $\varphi_0$ and $\varphi_1$ respectively.  Moreover, we will ensure 
+\begin{align}
+\varphi_0\circ\alpha\circ\varphi_0^{-1} \end{align} is a correction by unitaries away from \begin{align}
+\varphi_1\circ\beta\circ\varphi_1^{-1}.
+\end{align} 
+
+More concretely, we use $(1)$ and notice that the sequence $$X_n=\begin{cases} v_{2k}\cdots v_0 (u_{2k}\cdots u_0) \alpha(v_{2k}\cdots v_0)& \text{ if } n=2k \\v_{2k+1}\cdots v_1 (u_{2k+1}\cdots u_1) \alpha(v_{2k+1}\cdots v_1)& \text{ if } n=2k+1\end{cases}$$ gives the correcting unitaries, which we will need to make sure it converges (at least the subsequences of odd and even terms). So that $$\varphi_0\circ \Ad  \lim_k X_{2k} \circ \alpha \circ \varphi_0^{-1}= \varphi_1\circ \Ad \lim_k X_{2k+1} \circ \beta \circ \varphi_1^{-1}$$ which would give the desired result.
+\end{tcolorbox}
+
+\begin{proof}[Proof of theorem \ref{Evans-Kishimoto}] The if statement is clear so we focus on the only if direction. So we assume $\alpha \approx_{au} \beta$ and choose a sequence of finite sets $\mathcal F_n$ in the unit ball with dense union. We now start an induction process. \begin{enumerate}
+\item[(Step 1)] By lemma \ref{approx} for $\beta$ given the pair $(1/2, \mathcal F_1)$ there exists a pair $(\delta_1, \mathcal G_1)$ and now define $$\mathcal G^{'}_1= \beta^{-1}(\mathcal G_1)\cup \mathcal F_1^{'}$$ and choose $\mathcal F_1^{'}:= \mathcal F_1$, and pick $\delta_1\leq 1/2$. Now choose $u_0\in \mathcal U (A)$ such that  $$\mathrm{max}_ {a\in \mathcal G_1^{'}}\norm {\beta(a)-u_0\alpha(a)u_0^*}\leq \delta_1/2.$$ Now define $\alpha_2:= \Ad u_0 \circ \alpha$, $v_0:= u_0$,  $\mathcal F_2^{'}= \mathcal F_2\cup \Ad v_0(\mathcal F_2)$ and for $alpha_2$ take $(2^{-2}, \mathcal F_2^{'})$ take $(\delta_2, \mathcal G_2)$ with $\delta_2\leq \mathrm{min}\{2^{-2}, \delta_1\}$. Thus, taking $\mathcal G_2^{'}=\alpha_2^{-1}(\mathcal G_2)\cup \mathcal F_2^{' }$ we can find $u_1\in \mathcal U (A)$ such that $$\mathrm{max}_{a\in \mathcal G_2^{'}}\norm {\alpha_2(a)-u_1\beta_1(a)u_1^*}\leq \delta_1$$
+
+and notice this implies $$\mathrm{max}_{a\in \mathcal G_1}\norm{[u_1, a]}$$ so that by lemma \ref{approx} there exists $v_1\in \mathcal U(A)$ such that for all $a\in \mathcal F_1^{'}$ $$\norm{u_1-v\beta_1(v_1)}\leq 2^{-1}$$ and $$\norm{[a,v]}\leq 2^{-1}$$
+
+\item[(Step 2)] Set $\beta_3= \Ad u_1\circ \beta_1$ and $\mathcal F_3^{'}=\mathcal F_3\cup \Ad v_1(\mathcal F_3)$ and choose for the pair $(2^{-3}, \mathcal F_3^{'})$ a pair $(\delta_3, \mathcal G_3)$ with $\delta_3\leq \mathrm{min}\{2^{-3}, \delta_2\}$ using lemma \ref{approx}. Define $\mathcal G_3 ^{'}= \beta_3^{-1}(\mathcal G_3 ^{'})\cup \mathcal F_3 ^{'}$ and pick $u_2$ with $$\norm{\beta_3(a)- u_2\alpha_2(a)u_2^*}\leq \delta_3/2$$. As before, this implies $$\mathrm{max}_{a\in \mathcal G_2}\norm{[a,u_2]}\leq \delta_2$$ and by lemma \ref{approx} we can find $v_2\in \mathcal U(A)$ such that for all $a\in \mathcal F_2^{'}$ we have $$\norm{u_2-v_2\alpha(v_2^*)}\leq 2^{-2}$$ and $$\norm{[a, v_2]}\leq 2^{-2}.$$
+
+Inductively we can now find unitaries $u_k, v_k \in \mathcal U(A)$ such that 
+
+\begin{align}
+\alpha_{2(k+1)}=\Ad u_ {2k}\circ \alpha_{2k},
+\end{align}  
+\begin{align}
+\beta_{2k+3}=\Ad (u_{2k+1})\circ \beta_{2k+1},
+\end{align}
+\begin{align}
+\mathrm{max}_{a\in \mathcal F_{2k}}\norm{\beta_{2k+1}(a)-\alpha_{2k}(a)}\leq 2^{-(2k+1)},
+\end{align}
+\begin{align}
+\norm{u_{2k}-v_{2k}\alpha_{2k}(v_{2k}^*)}\leq 2^{-2k}, \text{ and } \norm{u_{2k+1}- v_{2k+1}\beta_{2k+1}(v_{2k+1}^*)}\leq 2 ^{-(2k+1)},
+\end{align}
+\begin{align}
+\mathrm{max}_{a\in \mathcal F_n^{'}}\norm{[v_n,a]}\leq 2^{-n},
+\end{align}
+\begin{align}
+\mathcal F_{2k}^{'}=\mathcal F_{2k}\cup \Ad(v_{2(k-1)\cdots v_0})(\mathcal F_{2k}), \text{ and } \mathcal F_{2k+1}^{'}= \mathcal F_{2k+1}\cup \Ad(v_{2k-1}\cdots v_1)(\mathcal F_{2k+1}). 
+\end{align}
+
+Combining this equations we can actually execute the idea of the proof word by word. Combining $(10)$ and $(11)$ we see the sequences of $*$-automorphisms $\Ad (v_{2k}\cdots v_0)$ and $\Ad (v_{2k+1}\cdots v_1)$ are point-wise Cauchy for all $a\in \mathcal F_n$, and $n\in \mathbb{N}$. Thus, they must me Cauchy for all $a\in A$. Consequently the sequences converge to automorphisms $\varphi_0$ and $\varphi_1$. We finish with a short computation showing that $X_{2k}$ and $X_{2k+1}$ as defined before are both Cauchy since then we can copy-paste the final steps of the idea of proof.      
+
+Notice$$\norm{u_{2k}-v_{2k}\alpha_{2k}(v_{2k}^*)}\leq 2^{2k}$$and this implies$$\norm{v^*_{2k}u_{2k}\alpha_{2k}(v_{2k})-1}\leq 2^{-2k}.$$ Consequently, letting $V_{2k}=v_{2k}\cdots v_0$ and $U_{2k}= u_{2k}\cdots u_0$ for simplicity, we see
+
+
+\begin{align*}
+X_{2k}& =V^*_{2k}U_{2k}\alpha(V_2k)\\ &= V^*_{2(k-1)}v^*_{2k}u_{2k}\alpha_{2k}(v_{2k}V_{2(k-1)})U_{2k-1}\\& \approx_{2^{-2k}} V^*_{2(k-1)}\alpha_{2k}(V_{2(k-1)})U_{2(k-1)}=X_{2(k-1)}.
+\end{align*}
+
+The same trick works for odd terms now using we have$$\norm{u_{2k+1}-v_{2k+1}\beta_{2k+1}(v_{2k+1}^*)}\leq 2^{-(2k+1)}$$and thus$$\norm{v_{2k+1}^*u_{2k+1}\beta_{2k+1}(v_{2k+1})-1}\leq 2^{-(2k+1)}$$ so that $$X_{2k+1}\approx_{2^{-(2k+1)}} X_{2k-1}$$ and the result follows. 
+\end{enumerate}
+
+\end{proof}
+
+\section{The categorical approach: A possible alternative to Evans-Kishimoto}
 
 \end{document}
