@@ -6,7 +6,7 @@
 %\usepackage{refcheck}
 \usepackage[shortlabels]{enumitem}
 \usepackage[dvipsnames]{xcolor}
-\usepackage[alphabetic,initials]{amsrefs}
+%\usepackage[alphabetic,initials]{amsrefs}
 \usepackage{comment}
 %\usepackage[pagebackref=true]{hyperref}
 \usepackage[normalem]{ulem}
@@ -41,6 +41,8 @@
 %\usepackage[arrow,curve,matrix,tips,2cell]{xy}
 \usepackage[hmargin=2cm,vmargin=2cm]{geometry}
 
+\usepackage[backend=biber]{biblatex}
+\addbibresource{ref.bib}
 
 
 \usepackage{hyperref}
@@ -439,12 +441,19 @@ Let $\mathbb U$ be a UHF-algebra and let $L=\pi$. Fix $\varepsilon>0$ and some f
 
 \begin{lemma}
 \label{approx}
-Let $A$ be unital, separable and with property $(*)$. Then, we have that if $\alpha$ is a Rokhlin automorphism on $A$, for all $u\in U(A_\infty\cap A')$ there exists $v\in U(A_\infty\cap A')$ such that $u=v\alpha(v^*)$ i..e, an (approximately central) co-boundary. \footnote{This is sometimes refer to as the \textit{one-cocycle property}.}
+Let $A$ be unital, separable and with property $(*)$. Then, we have that if $\alpha$ is a Rokhlin automorphism on $A$, for all $u\in U(A_\infty\cap A')$ there exists $v\in U(A_\infty\cap A')$ such that $u=v\alpha(v^*)$ i..e, an (approximately central) co-boundary. \footnote{This is sometimes refer to as the \textit{one-cocycle property}.}\footnote{We will use the finite $(\varepsilon-\delta)$-version of this result.}
 \end{lemma}
 \begin{proof}
 First notice that given a sequence of approximately central sequences $(v_k^{(n)})_k$, the diagonal sequence i.e., $(v^{(k)}_k)_k$ is also approximately central. As a result, it is enough to proof lemma \ref{approx} up to $\varepsilon$ i..e, we show that for all $\epsilon>0$ and for all $u\in U(A_\infty\cap A')$ there exists $v\in U(A_\infty\cap A)$ with $u\approx_\varepsilon v\alpha(v^*)$. First, let $\varepsilon>0$ and pick $n\in \mathbb{N}$ such that $L/n<\varepsilon$, where $L>0$ is the constant from property $(*)$ (definition \ref{prop (*)}). Then we apply the Rokhlin property (definition \ref{Rokklin prop}) to that same $n\in \mathbb{N}$ so that there exists $e,f\in A_\infty\cap A'$ such that the projections $\alpha^j(e)$, $\alpha^l(f)$ partition the space. Moreover, choose a $L$-Lipschitz paths $z_t$, $\gamma_t$ with $z_0=1$ and $z_1=\alpha^n(u_n^*)$, and $\gamma_0$, $\gamma_1=\alpha^{n+1}(u_{n+1}^*$ where $u_k=u\cdots \alpha^{k-1}(u)$\footnote{This choice is made because $u_j\alpha(u_{j-1})=u$ and $\alpha^n(z^*_{\frac{n-1}{n}})\approx u_n$}. Notice we can change the projections $e$ and $f$ by taking sub-sequences and diagonals so that they commute with elements of the form $\alpha^k(z_t)$ and $\alpha^k(u)$ for all $k\in \mathbb{Z}$ and rational $t$ since this set of elements is countable, which will imply the projections commute with $\alpha^k(z_t)$ for all $k\in \mathbb{Z}$ and $t\in [0,1]$. We repeat the same process with $\gamma_t$. Consequently $$v=\sum_{j=0}^{n-1}\alpha^j(e)u_j\alpha^j(z_{j/n})+\sum_{l=0}^{n}\alpha^l(f)u_l\alpha^l(\gamma_{\frac{l}{n+1}})$$ is a unitary such that since $alpha$ cycles the projections, and all projections are orthogonal \begin{align*}v\alpha(v^*)= e \alpha^n(z^*_{\frac{n-1}{n}})\alpha(u^*_{n-1})& +\sum_{j=1}^{n-1}\alpha^j(e)u_j\alpha^j(z_{j/n}z^*_{\frac{j-1}{n}})\alpha(u^*_{j-1})\\& + f\alpha^{n+1}(\gamma^*_{\frac{n}{n+1}})\alpha(u^*_{n+1})+\sum_{l=1}^{n}\alpha^j(f)u_l\alpha^l(\gamma_{\frac{l}{n+1}}\gamma^*_{\frac{l-1}{n+1}})\alpha(u^*_{l-1})\\& \approx_\varepsilon \sum_{j=1}^{n}\alpha^j(e)u_j\alpha(u_{j-1}^*)+\sum_{l=1}^{n+1}\alpha^l(f)u_l\alpha(u_{l-1}^*)\\&= u\end{align*} since $\alpha^n(z^*_{\frac{n-1}{n}})\approx_\epsilon u_n$, $\alpha^{n+1}(\gamma^*_{\frac{n}{n+1}})\approx_\varepsilon u_{n+1}$, $\alpha^l(\gamma_{\frac{l}{l+1}}\gamma^*_{\frac{l-1}{n+1}})\approx_{\varepsilon} 1$, and $\alpha^j(z_{j/n}z^*_{\frac{j}-1{n}})\approx_\varepsilon 1$ and assuming without loss of generality that $A_\infty\cap A'\subset \mathcal B(\mathcal H)$ we see that $$\mathcal H= \bigoplus_{j=1}^{n}\alpha^j(e)(\mathcal H)\oplus\bigoplus_{l=1}^{n+1}\alpha^l(f)(\mathcal H)$$ and each summand above maps a direct summand to itself. Then we use that an operator of the form $a=\oplus_{i}u_i$ has norm given by $\sup_i\norm{u_i}$.
 \end{proof}
 
+
+\begin{remark}
+\label{remark of approx vanishing}
+In terms of finite sets this means that for all $\varepsilon>0$ and $\mathcal F\subset \subset A$ there exists $\delta>0$ and $\mathcal G\subset\subset A$ such that given a unitary $u\in \mathcal U(A)$ if $$\mathrm{max}_{a\in \mathcal G}\norm{[u,a]}\leq \delta$$ then there exists $v\in \mathcal U(A)$ such that for all $a\in \mathcal F$ $$\mathrm{max}\{\norm{u-v\alpha(v^*)}, [a,v]\}\leq \varepsilon.$$   
+
+
+\end{remark}
 \begin{definition}
 If a unital and separable $C^*$-algebra $A$ equipped with an (not necessarily Rokhlin) automorphism $\alpha\in \mathrm{Aut(A)}$ satisfies the conclusions of lemma \ref{approx} we say the pair $(A,\alpha)$ has the one-cocycle property or simply $\alpha$ has the one-cocycle property when the $C^*$-algebra in question is fixed. Moreover, we say $(A,\alpha)$ has the inner  one-cocycle propery if $(A, \Ad w\circ \alpha)$ has the one co-cycle property for all $u\in \mathcal U(A)$ 
 \end{definition}
@@ -516,18 +525,188 @@ Inductively we can now find unitaries $u_k, v_k \in \mathcal U(A)$ such that
 
 Combining this equations we can actually execute the idea of the proof word by word. Combining $(10)$ and $(11)$ we see the sequences of $*$-automorphisms $\Ad (v_{2k}\cdots v_0)$ and $\Ad (v_{2k+1}\cdots v_1)$ are point-wise Cauchy for all $a\in \mathcal F_n$, and $n\in \mathbb{N}$. Thus, they must me Cauchy for all $a\in A$. Consequently the sequences converge to automorphisms $\varphi_0$ and $\varphi_1$. We finish with a short computation showing that $X_{2k}$ and $X_{2k+1}$ as defined before are both Cauchy since then we can copy-paste the final steps of the idea of proof.      
 
-Notice$$\norm{u_{2k}-v_{2k}\alpha_{2k}(v_{2k}^*)}\leq 2^{2k}$$and this implies$$\norm{v^*_{2k}u_{2k}\alpha_{2k}(v_{2k})-1}\leq 2^{-2k}.$$ Consequently, letting $V_{2k}=v_{2k}\cdots v_0$ and $U_{2k}= u_{2k}\cdots u_0$ for simplicity, we see
+Notice, $$\norm{u_{2k}-v_{2k}\alpha_{2k}(v_{2k}^*)}\leq 2^{2k}$$and this implies$$\norm{v^*_{2k}u_{2k}\alpha_{2k}(v_{2k})-1}\leq 2^{-2k}.$$ Consequently, letting $V_{2k}=v_{2k}\cdots v_0$ and $U_{2k}= u_{2k}\cdots u_0$ for simplicity, we see
 
 
 \begin{align*}
 X_{2k}& =V^*_{2k}U_{2k}\alpha(V_2k)\\ &= V^*_{2(k-1)}v^*_{2k}u_{2k}\alpha_{2k}(v_{2k}V_{2(k-1)})U_{2k-1}\\& \approx_{2^{-2k}} V^*_{2(k-1)}\alpha_{2k}(V_{2(k-1)})U_{2(k-1)}=X_{2(k-1)}.
 \end{align*}
-
 The same trick works for odd terms now using we have$$\norm{u_{2k+1}-v_{2k+1}\beta_{2k+1}(v_{2k+1}^*)}\leq 2^{-(2k+1)}$$and thus$$\norm{v_{2k+1}^*u_{2k+1}\beta_{2k+1}(v_{2k+1})-1}\leq 2^{-(2k+1)}$$ so that $$X_{2k+1}\approx_{2^{-(2k+1)}} X_{2k-1}$$ and the result follows. 
 \end{enumerate}
 
 \end{proof}
 
 \section{The categorical approach: A possible alternative to Evans-Kishimoto}
+
+
+\section{The Classification of Rokhlin flows}
+
+
+This section is a synthesis of \cite{szabo2021classification} which we will later make use of quite heavily.
+
+\begin{definition}
+Let $\alpha: \mathbb{R}\acts A$ be a group action. We define the map $$\alpha_{co}^T: A\rightarrow C([0,T], A): a\mapsto (\alpha_{co}^T: t\mapsto \alpha_t(a))$$
+for all $T>0$. In particular, we let $\alpha_{co}:=\alpha_{co}^1$. 
+\end{definition}
+
+
+\begin{lemma}
+Let $\alpha,\beta: \mathbb{R}\acts A$ be two group actions. Then, the following are equivalent.
+
+\begin{enumerate}
+\item $\alpha_{co}\approx_u \beta_{co}$, 
+\item $\alpha^T_{co}\approx_u \beta_{co}^T$, 
+\item $\alpha^T_{co}\approx_u \beta_{co}^T$ implemented by unitaries in $1+ \mathcal C_0((0,T], A)$. 
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Notice that $(3)\implies (2)\implies (1)$ so it is enough to show $(1)\implies (3)$. Moreover notice that if for some $T>0$ we see $\alpha_{co}^T\approx_u \beta_{co}^{T}$; then,  $\alpha_{co}^{T'}\approx_u \beta_{co}^{T'}$ for all $T'\leq T$. Consequently, it is enough to show $(1)\implies (3)$ for all $T\in \mathbb{N}-\{0\}$. So, fix $T\geq 1$, let $\mathcal F\subset \subset A$, and pick $\varepsilon>0$. Since both actions are continuous, we can define the compact sets \begin{align}
+\mathcal F'=\bigcup_{0\leq s \leq T-1}\beta_s(\mathcal F)
+\end{align} 
+\begin{align}
+\label{compactset_1}
+\mathcal F''=\bigcup_{0\leq s\leq 1}\beta_s(\mathcal F')
+\end{align}
+
+and notice $\mathcal F'\subseteq \mathcal F''$. We use this compact sets to define a unitary $w\in 1+\mathcal C_0((0,T], A)$ with the desired properties. First, take $w'\in \mathcal U(1+C(I, A))$ such that for all $a\in \mathcal F''$ 
+
+\begin{align}
+\label{compactset_2}
+\norm{\Ad (w')\circ \alpha_{co}(a)-\beta_{co}(a)}=\max_{s\in I}\norm{\Ad (w_s')\circ \alpha_s(a)-\beta_s(a)}\leq \varepsilon/{2T} 
+\end{align}  
+
+Choosing $s=0$ and by (\ref{compactset_2}), we have that (abusing notation) for all $s\in \mathcal F'$
+\begin{align}
+\label{compactset_3}
+\max_{a\in \mathcal F'}\max_{s\in I}\norm{w'_0\alpha_s(a){w_0'}^{*}-\alpha_s(a)}\leq \epsilon/{2T}. 
+\end{align} 
+
+Consequently, we can put these results together to get a unitary $w=w'{w_0'}^*$ with $w_0=1$ so that 
+\begin{align}
+\label{nicerintertwining}
+\max_{a\in \mathcal F'}\max_{s\in I}\norm{\Ad w_s\circ \alpha_s(a)-\beta_s(a)}\leq \epsilon/L, \text{ and } w\in 1+\mathcal C_0((0,1], A).
+\end{align}
+
+We can extend this unitary to $1+ \mathcal C_0((0,T], A)$ inductively, and we will show it witnesses the approximate unitary equivalence between $\alpha_{co}^T$ and $\beta_{co}^T$ for $\mathcal F \subset \subset A$. Thus, for $j\in \{0,..., T-1\}$ and $s\in I$ define \[w^{(T)}_{j+s}=w^{(T)}_j\alpha_j(w_s).\] Now, we set a decreasing sequence from $\mathcal F'$ to $\mathcal F$ given by \[\mathcal F'_k=\bigcup_{0\leq s\leq T-1-k}\beta_s(\mathcal F).\] Besides, it is worth noting $\beta_s(\mathcal F'_{k+1})\subseteq \mathcal F'_{k}$ for all $s\in I$. Now, we will show inductively that for $k\leq T-1$ we have \begin{align}
+\max_{a\in \mathcal F'_k} \max_{s\in I}\norm {\Ad w_{k+s}^{(T)}\circ \alpha_{k+s}(a)-\beta_{k+s}(a)}\leq {(k+1)}\varepsilon/T
+\end{align}
+which clearly implies $\Ad w^{(T)}\circ \alpha_{co}(a)\approx_\varepsilon \beta_{co}(a)$ for all $a\in \mathcal F$ since $ \mathcal F\subseteq \mathcal F'_k$ and any $t\in [0,T]$ can be written as $k+s$ for some $k\leq T-1$ and $s\in I$. Notice that for $k=0$ we get (\ref{compactset_3}). Now assume true for $k<T-1$ and notice for $s=1$ the induction hypothesis gives 
+
+\begin{align}
+\label{IH_1}
+\max_{a\in \mathcal F'_k} \norm {\Ad w_{k+1}^{(T)}\circ \alpha_{k+1}(a)-\beta_{k+1}(a)}\leq {(k+1)}\varepsilon/T.
+\end{align}
+
+For $a\in \mathcal F'_{k+1}$, $s\in I$ we see 
+
+\begin{align}
+ \norm {\Ad w_{k+1+s}^{(T)}\circ \alpha_{k+1+s}(a)-\beta_{k+1+s}(a)}&= \norm{\Ad (w^{(T)}_{k+1}\alpha_{k+1}(w_s))\circ \alpha_{k+1}(\alpha_s(a)-\beta_{k+1}(\beta_s(a))}\\& = \norm{\Ad w_{k+1}^{(T)}(\alpha_{k+1}(\Ad w_s(\alpha_s(a))))- \beta_{k+1}(\beta_s(a))}\\& \leq \varepsilon/T + \norm{\Ad w^{(T)}_{k+1}(\alpha_{k+1}(\beta_s(a)))-\beta_{k+1}(\beta_s(a))}\\ & \leq (k+2)\varepsilon/T.
+\end{align}
+
+To go from the second to the third line we use (\ref{nicerintertwining}) and from the third to the forth we use (\ref{IH_1}). This completes the proof. 
+\end{proof}
+
+\begin{definition}
+Let $\alpha,\beta:\Rz A$ be two flows. We say $\alpha$ and $\beta$ are cocycle conjugate if there exists an $\alpha$-cocyle $w: \Rz\rightarrow \mathcal M(\mathcal U (A))$ and $\varphi\in \Aut(A)$ such that for all $t\in \Rz$ \[\Ad w_t\circ \alpha=\varphi^{-1}\circ \beta_t\circ \varphi\] and we  write $\alpha \sim_\varphi \beta$. 
+\end{definition}
+
+\begin{lemma}
+Let $\alpha,\beta:\mathbb{R}\acts A$ where $A$ is separable. If $\alpha\sim_{\varphi} \beta$ and $\varphi \in \overline {\mathrm{Inn}}(A)$, then $\alpha_{co}\approx_u \beta_{co}$. 
+\end{lemma}
+
+\begin{proof}
+Notice it is enough to show the proposition for exterior equivalence and conjugacy (with inner automorphism) separately. \begin{itemize}
+\item If $\alpha_t=\varphi^{-1}\circ\beta_t\circ \varphi$. Fix $(\mathcal F, \varepsilon)$ then we can choose (by compactness and using that $A$ is separable) a unitary $u\in \mathcal U(1+A)$ such that for all $a\in \mathcal F$  \[\max\{\norm{\varphi(a)-\Ad(u)(a)}, \max_{s\in I}\norm{\varphi^{-1}(\alpha_t(\varphi(a)))-\Ad u^*(\alpha_t(\varphi(a)))}\}\leq \varepsilon/2.\] The co-boundary $w: t\mapsto w_t=u^*\alpha_t(u)$ now does the job since \[\norm{\Ad w\circ \alpha_{co}(a)-\beta_{co}(a)}=\max_{s\in I}\norm{ u^*\alpha_s(u)\alpha_s(a)\alpha_s(u^*)u-\beta_s(a)}= \norm{\Ad u^*\circ \alpha_s\circ \Ad u(a)-\beta_s(a)}\]
+a quick computation gives \[\norm{\Ad w\circ \alpha_{co}(a)-\beta_{co}(a)}\approx_{\varepsilon/2}  \norm{\Ad u^*\circ \alpha_s\circ \varphi(a)-\beta_s(a)} \approx_{\varepsilon/2}0\]
+for all $a\in \mathcal F$. Since $\varepsilon>0$ was arbitrary the result follows. 
+
+\item If $\alpha$ and $\beta$ are exterior equivalent there exists a $\alpha$-cocycle $w: \mathbb{R}\rightarrow (\mathcal U(\mathcal M(A)))$ such that \[\Ad w_t\circ \alpha_t=\beta_t.\] If $A$ is unital we are done by choosing the cocycle. Otherwise, we use a result due to Kashimoto \cite[Theorem 1.1]{kishimoto2006multiplier} which states that given a $p\in A$, $\alpha$-cocycle $u_t$ we can find an $\alpha$-cocycle $v_t$ with values in $\mathcal U(1+A)$ such that $\norm{(u_t-v_t)}\leq \varepsilon$ for $\varepsilon>0$ and $t\in [-1,1]$ which (find how) can be extended to finite sets $\mathcal F\subset \subset A$. Consequently, for a pair $(\mathcal F, \varepsilon)$ we can find an $\alpha$-cocycle $v_t$ with values in $\mathcal U(1+A)$ such that
+
+$$\norm{\Ad v_t\circ \alpha_t- \Ad u_t\circ \alpha_t}\leq \varepsilon$$ and viewing the cocycle as a unitary  $v\in 1+C([0,1], A)$ we have \[\max_{a\in \mathcal F}\norm{\Ad v\circ \alpha_{co}(a)-\beta_{co}(a)}\leq \varepsilon\] as desired.
+
+
+\end{itemize}
+\end{proof}
+\begin{lemma}
+Kishimoto's \cite[Theorem 1.1]{kishimoto2006multiplier} implies that for all finite $\mathcal F\subset \subset A$ given a cocycle $u:\mathbb{R}\rightarrow \mathcal M(\mathcal U(A))$, and for all $varepsilon>0$ we can find a cocycle $v:\mathbb{R}\rightarrow \mathcal U(1+A)$ such that \[\max_{a\in \mathcal F}\norm{\Ad v_t \alpha_t(a)- \Ad u_t\alpha_t}\leq \varepsilon \text{ for all } t\in I.\]
+
+\end{lemma}
+
+
+\begin{proof}
+
+Given $\varepsilon>0$ apply \cite[Theorem 1.1]{kishimoto2006multiplier} to $A^n$ given $\mathcal F=\{a_1,...,a_n\}$ and $\underline{a}=\{a_1,...,a_n\}\in A^n$ so that given a cocycle $u$ with values in $\mathcal M(\mathcal U(A))$, we can consider $\underline u:=\oplus_{i\leq n} u$ and we can find and $\oplus_{i\leq n}\alpha$- we abuse notation and still call it $\alpha$- cocycle $v$ as above such that \[\norm{u_t(\alpha_t(\underline a)-v_t \alpha_t(\underline a)}\leq \varepsilon/4\] since $a\mapsto a^*$ is continuous we can choose $v$ such that \[\norm{\alpha_t(\underline a) \underline u_t^*-\alpha_t(\underline a) v^*_t}\leq \varepsilon/4.\] Consequently, we see that \[\norm{\Ad v_t \alpha_t(\underline a)- \Ad u_t \alpha_t(\underline a)}=\norm{\Ad v_t \alpha_t(\underline a)- v_t\alpha_t(\underline a)u_t^*- \Ad u_t \alpha_t(\underline a)+v_t\alpha_t(\underline a)u^*_t}\leq \varepsilon/2 \]
+
+by the triangle inequality. Now, since $\underline u$ is diagonal (idea does not work) 
+\end{proof}
+
+
+
+\section{The rotation map}
+
+
+
+
+\section{Rokhlin Flows on non-commutative tori}
+
+In this section we want to explore how Rokhlin flows can be constructed on non-commutative tori as first discussed by Kishimoto \cite{kishimoto1996rokhlin}. We first try to understand how to make it work for irrational rotation algebras $A_{\theta}$ 
+we will often make use the following identification 
+
+
+ \[A_\theta\cong \mathcal C (\mathbb T)\rtimes_{\alpha^\theta} \mathbb Z\]
+
+where the action $\alpha^{\theta}: \mathbb Z\acts \mathbb T$ is given by $\alpha^\theta_1(z)=e^{-2\pi i \theta}z$ for a fixed $\theta\in \mathbb I$. More, generally $A_\theta$ can be understood as the universal $C^*$-algebra generated by two unitaries $u_1, u_2$ such that $$u_1u_2=u_2u_1e^{2\pi i \theta}$$. it is sometimes refer to as the non-commutative tori, and one can analogously define  non-commutative $n$-tori as the universal $C^*$-algebra generated by unitaries $u_1,..., u_n$ with commutation relations \[u_iu_j=u_ju_ie^{2\pi i \theta_{ij}}\] where $ \vartheta=(\theta_{ij})_{ij}$ is an anti-symmetric matrix i.e., $\vartheta^T=-\vartheta$. To understand the examples in this section we will need the following results about closed subgroups of $\mathbb{R}^n$. The proofs of these results are not hard but they are quite ingenious. They are all taken from \cite[Chapter VII]{bourbaki1966elements}.
+
+\begin{lemma}
+Let $G$ be a closed subgroup of $\mathbb{R}^n$ which is not discrete. Then it contains a line i.e., there exists $a\in G-\{0\}$ with $ta\in G$ for all $t\in \mathbb R$.
+\end{lemma}
+
+\begin{corollary}
+The vector space $V$ generated by the union of all lines contained in $G$ is a non-empty subgroup of $G$.  
+\end{corollary}
+
+\begin{corollary}
+$G$ is the direct sum of $V$ and $V^\perp\cap G$, where $V^\perp\cap G$ does not contain any line passing through the origin so it is discrete.  
+\end{corollary}
+
+\begin{corollary}
+Since any discrete group $G$ of $\mathbb R^n$ is finitely generated, we have that any closed subgroup is of the form $\mathbb{R}^a\times \mathbb{Z}^b\times \{0\}^{n-(a+b)}$ up to a transformation by an invertible matrix i.e., \[G\cong A(\mathbb{R}^a\times \mathbb{Z}^b\times \{0\}^{n-(a+b)})\] for some $A\in GL_n(\mathbb{R})$. 
+\end{corollary}
+
+\begin{corollary}
+Given a closed subgroup $G\subseteq \mathbb{R}^n$ we can define the group \[G^*:=\{y\in \mathbb{R}^n: x\cdot y=0 \text{ for all } x\in G\}\] by the previous results $$G\mapsto G^*$$ defines an inverse Galois correspondence for the lattice of subgroups of $\mathbb R^n$ to itself. In particular, $G^*=0$ if and only if $G=\mathbb{R}^n$.
+\end{corollary}
+
+\begin{proposition}\cite[Proposition 2.5]{kishimoto1996rokhlin} 
+\label{Roklin property tori} Let $A(\vartheta)$ be a non-commutative n-torus which $\vartheta \mathbb{Z}^n\cap \mathbb{Z}^n=\{0\}$ such $p=(p_1,..., p_n)^T\in \mathbb R^n$ with $\mathbb{Z}^n+\vartheta \mathbb{Z}^n \cap \mathbb{R}p=\{0\}$. Then the flow given by $$\alpha_t(u_j)=e^{2\pi i p_it}u_j$$ has the Rokhlin property. \end{proposition}
+
+To prove proposition \ref{Roklin property tori} we use the following 
+
+\begin{lemma}
+The set \[\mathcal S=\{(\vartheta m+k), p\cdot m\};\] where $\vartheta$ and $p\neq 0$, are as above, and $m,k\in \mathbb{Z}^n$, is dense. 
+
+\end{lemma}
+
+\begin{proof}
+Note that $\overline G$ is a closed subgroup of $\mathbb R^n\times \mathbb R$. Assuming $\overline{G}\neq \mathbb{R}^n\times \mathbb{R}$ we see $G^*$ contains a non-zero element $(\zeta_0, \zeta_1)\in \mathbb{R}^n\times \mathbb{R}$. Consequently, we see that for all $k,m\in \mathbb{Z}^n$ \[\langle \zeta_0,k \rangle-\langle \vartheta\zeta_0,  m\rangle+ \langle \zeta_1p, m\rangle \in \mathbb{Z} \text{ for all } m,k\in \mathbb{Z}^n\]
+
+thus, we see that $\zeta_0\in \mathbb{Z}^n$ choosing $m=0$ and $k=e_j$. Now, choosing $k=0$ and $m=e_j$ we can conclude that \[\zeta_1p-\vartheta\zeta_0=w\in \mathbb{Z}^n;\] from here it follows that $w+\vartheta \zeta_0\in \mathbb{R}p\cap (\mathbb{Z}^n+ \vartheta \mathbb{Z}^n)=0$ i.e., $\vartheta \zeta_0=w$ which implies by our assumption that $\zeta_0=0$. Thus, $$\zeta_1 p\in \mathbb{R}p\cap (\mathbb{Z}^n+ \vartheta \mathbb{Z}^n)=0$$ from which is clear that $\zeta_1=0$. This yields a contradiction as $(\zeta_0, \zeta_1)\neq 0$.
+\end{proof}
+
+\section{Questions}
+\begin{question}
+Why do we use $\mathcal U(1+A)$ in the notes?
+\end{question}
+
+\begin{question}{How much weaker is the inner one-cocycle property than the combination of $(*)$ and the Rokhlin property?}
+\end{question}
+
+\begin{question}
+Differences between the generality of Evans-Kishimoto type arguments versus the two sided intertwining in \cite{szabo2021categorical}
+\end{question}
+
+
+\printbibliography
 
 \end{document}
